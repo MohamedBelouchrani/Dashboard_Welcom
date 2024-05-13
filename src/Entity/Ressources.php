@@ -16,6 +16,9 @@ class Ressources
     #[ORM\Column(length: 255)]
     private ?string $nom = null;
 
+    #[ORM\ManyToOne(inversedBy: 'Ressources')]
+    private ?Activation $activation = null;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -29,6 +32,18 @@ class Ressources
     public function setNom(string $nom): static
     {
         $this->nom = $nom;
+
+        return $this;
+    }
+
+    public function getActivation(): ?Activation
+    {
+        return $this->activation;
+    }
+
+    public function setActivation(?Activation $activation): static
+    {
+        $this->activation = $activation;
 
         return $this;
     }

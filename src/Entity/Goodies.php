@@ -22,6 +22,9 @@ class Goodies
     #[ORM\Column(length: 255)]
     private ?string $image = null;
 
+    #[ORM\ManyToOne(inversedBy: 'Goodies')]
+    private ?Ressource $ressource = null;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -59,6 +62,18 @@ class Goodies
     public function setImage(string $image): static
     {
         $this->image = $image;
+
+        return $this;
+    }
+
+    public function getRessource(): ?Ressource
+    {
+        return $this->ressource;
+    }
+
+    public function setRessource(?Ressource $ressource): static
+    {
+        $this->ressource = $ressource;
 
         return $this;
     }

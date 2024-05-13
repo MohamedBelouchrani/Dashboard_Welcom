@@ -16,6 +16,9 @@ class Application
     #[ORM\Column(length: 255)]
     private ?string $lienApplication = null;
 
+    #[ORM\ManyToOne(inversedBy: 'Application')]
+    private ?Operation $operation = null;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -29,6 +32,18 @@ class Application
     public function setLienApplication(string $lienApplication): static
     {
         $this->lienApplication = $lienApplication;
+
+        return $this;
+    }
+
+    public function getOperation(): ?Operation
+    {
+        return $this->operation;
+    }
+
+    public function setOperation(?Operation $operation): static
+    {
+        $this->operation = $operation;
 
         return $this;
     }

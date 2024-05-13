@@ -51,9 +51,16 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\OneToMany(targetEntity: Client::class, mappedBy: 'user')]
     private Collection $client;
 
+    /**
+     * @var Collection<int, Operation>
+     */
+    #[ORM\OneToMany(targetEntity: Operation::class, mappedBy: 'user')]
+    private Collection $Operation;
+
     public function __construct()
     {
         $this->client = new ArrayCollection();
+        $this->Operation = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -202,6 +209,36 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
             // set the owning side to null (unless already changed)
             if ($client->getUser() === $this) {
                 $client->setUser(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Operation>
+     */
+    public function getOperation(): Collection
+    {
+        return $this->Operation;
+    }
+
+    public function addOperation(Operation $operation): static
+    {
+        if (!$this->Operation->contains($operation)) {
+            $this->Operation->add($operation);
+            $operation->setUser($this);
+        }
+
+        return $this;
+    }
+
+    public function removeOperation(Operation $operation): static
+    {
+        if ($this->Operation->removeElement($operation)) {
+            // set the owning side to null (unless already changed)
+            if ($operation->getUser() === $this) {
+                $operation->setUser(null);
             }
         }
 

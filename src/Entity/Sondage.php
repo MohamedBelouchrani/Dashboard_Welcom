@@ -16,6 +16,9 @@ class Sondage
     #[ORM\Column(length: 255)]
     private ?string $formulaire = null;
 
+    #[ORM\ManyToOne(inversedBy: 'Sondage')]
+    private ?Operation $operation = null;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -29,6 +32,18 @@ class Sondage
     public function setFormulaire(string $formulaire): static
     {
         $this->formulaire = $formulaire;
+
+        return $this;
+    }
+
+    public function getOperation(): ?Operation
+    {
+        return $this->operation;
+    }
+
+    public function setOperation(?Operation $operation): static
+    {
+        $this->operation = $operation;
 
         return $this;
     }

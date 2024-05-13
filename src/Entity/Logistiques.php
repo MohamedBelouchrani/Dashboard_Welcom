@@ -19,6 +19,9 @@ class Logistiques
     #[ORM\Column]
     private ?int $quantites = null;
 
+    #[ORM\ManyToOne(inversedBy: 'Logistiques')]
+    private ?Ressource $ressource = null;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -44,6 +47,18 @@ class Logistiques
     public function setQuantites(int $quantites): static
     {
         $this->quantites = $quantites;
+
+        return $this;
+    }
+
+    public function getRessource(): ?Ressource
+    {
+        return $this->ressource;
+    }
+
+    public function setRessource(?Ressource $ressource): static
+    {
+        $this->ressource = $ressource;
 
         return $this;
     }
