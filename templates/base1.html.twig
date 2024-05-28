@@ -1,20 +1,40 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <meta charset="UTF-8">
-        <title>{% block title %}Welcome!{% endblock %}</title>
+	<head>
+		<title>Home | Light Able Admin & Dashboard Template</title>
+		<!-- [Meta] -->
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimal-ui" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta
+		name="description"
+		content="Light Able admin and dashboard template offer a variety of UI elements and pages, ensuring your admin panel is both fast and effective."
+		/>
+		<meta name="author" content="phoenixcoded" />
 
-        <link rel="shortcut icon" type="image/png" href="{{asset('images/favicon.png')}}">
-        <link href="{{asset('vendor/bootstrap-select/dist/css/bootstrap-select.min.css')}}" rel="stylesheet">
-        <link href="{{asset('vendor/swiper/css/swiper-bundle.min.css')}}" rel="stylesheet">
-        <link href="{{asset('vendor/datatables/css/jquery.dataTables.min.css')}}" rel="stylesheet">
-        <link href="{{asset('vendor/bootstrap-datetimepicker/css/bootstrap-datetimepicker.min.css')}}" rel="stylesheet">
-		<!-- Style css -->
-		<link class="main-css" href="{{asset('css/style.css')}}" rel="stylesheet"> 
+		<!-- [Favicon] icon -->
+		<link rel="icon" href="https://html.phoenixcoded.net/light-able/bootstrap/assets/images/favicon.svg" type="image/x-icon" />
+
+		<!-- map-vector css -->
+		<link rel="stylesheet" href="{{ asset('/css/plugins/jsvectormap.min.css') }}">
+		<!-- [Google Font : Public Sans] icon -->
+		<link href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
+
+		<!-- [Tabler Icons] https://tablericons.com -->
+		<link rel="stylesheet" href="{{ asset('/fonts/tabler-icons.min.css') }}" >
+		<!-- [Feather Icons] https://feathericons.com -->
+		<link rel="stylesheet" href="{{ asset('/fonts/feather.css') }}" >
+		<!-- [Font Awesome Icons] https://fontawesome.com/icons -->
+		<link rel="stylesheet" href="{{ asset('/fonts/fontawesome.css') }}" >
+		<!-- [Material Icons] https://fonts.google.com/icons -->
+		<link rel="stylesheet" href="{{ asset('/fonts/material.css') }}" >
+		<!-- [Template CSS Files] -->
+		<link rel="stylesheet" href="{{ asset('/css/style.css') }}" id="main-style-link" >
+		<link rel="stylesheet" href="{{ asset('/css/style-preset.css') }}" >
 		
-        
-        {% block stylesheets %}
-        {% endblock %}
+		
+		{% block stylesheets %}
+			{% endblock %}
 
         {% block javascripts %}
             {% block importmap %}{{ importmap('app') }}{% endblock %}
@@ -22,55 +42,16 @@
     </head>
 
     <body>
-		<div id="main-wrapper">
-            <div class="container">
-                <div class="content-body">
-                    <div class="container-fluid">
-
+	<div class="auth-main v1">
+		<div class="auth-wrapper">
+			<div class="auth-form">
+				<div class="card my-5">
+					<div class="card-body">
                         {% block body %}{% endblock %}
                     </div>
                 </div>
             </div>
 		</div>
-		<script src="{{asset('vendor/global/global.min.js')}}"></script>
-		<script src="{{asset('vendor/chart-js/chart.bundle.min.js')}}"></script>
-		<script src="{{asset('vendor/bootstrap-select/dist/js/bootstrap-select.min.js')}}"></script>
-		<script src="{{asset('vendor/apexchart/apexchart.js')}}"></script>
-		
-		<!-- Dashboard 1 -->
-		<script src="{{asset('js/dashboard/dashboard-1.js')}}"></script>
-		<script src="{{asset('vendor/draggable/draggable.js')}}"></script>
-		<script src="{{asset('vendor/swiper/js/swiper-bundle.min.js')}}"></script>
-		
-		<script src="{{asset('vendor/datatables/js/jquery.dataTables.min.js')}}"></script>
-		<script src="{{asset('vendor/datatables/js/dataTables.buttons.min.js')}}"></script>
-		<script src="{{asset('vendor/datatables/js/buttons.html5.min.js')}}"></script>
-		<script src="{{asset('vendor/datatables/js/jszip.min.js')}}"></script>
-		<script src="{{asset('js/plugins-init/datatables.init.js')}}"></script>
-	
-		<!-- Apex Chart -->
-		
-		<script src="{{asset('vendor/bootstrap-datetimepicker/js/moment.js')}}"></script>
-		<script src="{{asset('vendor/bootstrap-datetimepicker/js/bootstrap-datetimepicker.min.js')}}"></script>
-	
-
-		<!-- Vectormap -->
-		<script src="{{asset('vendor/jqvmap/js/jquery.vmap.min.js')}}"></script>
-		<script src="{{asset('vendor/jqvmap/js/jquery.vmap.world.js')}}"></script>
-		<script src="{{asset('vendor/jqvmap/js/jquery.vmap.usa.js')}}"></script>
-		<script src="{{asset('js/custom.min.js')}}"></script>
-		<script src="{{asset('js/deznav-init.js')}}"></script>
-		<script src="{{asset('js/demo.js')}}"></script>
-		<script src="{{asset('js/styleSwitcher.js')}}"></script>
-		<script>
-			jQuery(document).ready(function(){
-				setTimeout(function(){
-					dzSettingsOptions.version = 'light';
-					new dzSettings(dzSettingsOptions);
-
-					setCookie('version','light');
-				},1500)
-			});
-		</script>
+	</div>
     </body>
 </html>
